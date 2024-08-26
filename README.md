@@ -37,6 +37,10 @@
 -   **Notifications**:
     -   Email notifications via Mailtrap when admins update or delete tickets
 
+
+-   **Filtering**:
+    -   You may filter tickets by priority ( low, medium, high ) for both admins and users
+
 ## Tech Stack
 
 -   **Backend & Frontend**: Laravel (Blade Templating Engine)
