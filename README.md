@@ -1,5 +1,12 @@
 # Ticketly
 
+![image](https://github.com/user-attachments/assets/aa87785c-9d15-4bf4-9daa-0ae4ef543e99)
+![image](https://github.com/user-attachments/assets/01d13b96-050b-4a49-a2b1-1bbb194a7de9)
+![image](https://github.com/user-attachments/assets/3f26b799-2e43-42b0-8f4f-5090b928a977)
+![image](https://github.com/user-attachments/assets/5eb294e7-d0da-4811-822e-15f89f1d6cfa)
+![image](https://github.com/user-attachments/assets/b5ff12ba-e914-4546-a362-9144561d486a)
+
+
 **Ticketly** is a simple ticketing system implemented in Laravel that allows users to manage their support tickets efficiently. This project demonstrates key functionalities such as ticket management for employees and administrators, notifications, and user authentication, leveraging modern tools and technologies.
 
 ## Project Overview
