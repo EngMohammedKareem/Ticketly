@@ -17,7 +17,11 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::with('user')->where('status', 'open')->orderBy('created_at', 'desc')->simplePaginate(5);
+        $tickets = Ticket::with('user')->orderBy('created_at', 'desc')->simplePaginate(5);
+        if (request()->has('priority')) {
+            $filtered = Ticket::with('user')->where('priority', request('priority'))->orderBy('created_at', 'desc')->simplePaginate(5);
+            return view('tickets.index', ['tickets' => $filtered]);
+        }
 
         return view('tickets.index', ['tickets' => $tickets]);
     }
