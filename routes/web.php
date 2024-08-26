@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('tickets', TicketController::class);
+Route::resource('tickets', TicketController::class)->middleware(['auth', 'verified']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
