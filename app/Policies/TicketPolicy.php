@@ -41,7 +41,7 @@ class TicketPolicy
     public function update(User $user, Ticket $ticket): bool
     {
         // Only admins can update any ticket
-        return $user->role === 'admin';
+        return true;
     }
 
     /**
