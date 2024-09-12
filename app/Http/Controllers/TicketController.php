@@ -50,7 +50,6 @@ class TicketController extends Controller
         $ticket = new Ticket();
         $ticket->title = $request->title;
         $ticket->description = $request->description;
-        $ticket->status = "open";
         $ticket->priority = $request->priority;
         $ticket->user_id = Auth::user()->id;
         $ticket->save();
@@ -62,7 +61,7 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        return view('tickets.show', ['ticket' => $ticket]);
+        return view('tickets.show', ['ticket' => $ticket, 'user' => Auth::user()]);
     }
 
     /**
@@ -71,7 +70,7 @@ class TicketController extends Controller
     public function edit(Ticket $ticket)
     {
         Gate::authorize('update', $ticket);
-        return view('tickets.edit', ['ticket' => $ticket]);
+        return view('tickets.edit', ['ticket' => $ticket, 'user' => Auth::user()]);
     }
 
     /**
@@ -93,7 +92,6 @@ class TicketController extends Controller
         $ticket->priority = $request->priority;
         $ticket->save();
         $user = $ticket->user;
-        $user->notify(new TicketStatusChanged($ticket));
         return redirect()->route('tickets.index');
     }
 
@@ -104,10 +102,10 @@ class TicketController extends Controller
     {
         Gate::authorize('delete', $ticket);
         $user = $ticket->user;
-        if (Auth::user()->role === 'admin') {
+        $ticket->delete();
+        if (Auth::user()->isAdmin()) {
             $user->notify(new TicketDeleted($ticket));
         }
-        $ticket->delete();
         return redirect()->route('tickets.index');
     }
 }
